@@ -86,7 +86,7 @@ if (process.env.NODE_ENV === 'development') {
     );
 }
 
-const LeadController = require('./routes/Lead/LeadController');
+// const LeadController = require('./routes/Lead/LeadController');
 
 //set cron for notifications
 async function sendNotify_location_not_Truck() {
