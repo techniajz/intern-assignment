@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "express": "^4.21.1",
+    "mongodb": "^6.10.0",
+    "mongoose": "^8.7.3",
+    "node": "^23.1.0",
+    "nodemon": "^3.1.7"
+  },
+  "name": "intern",
+  "version": "1.0.0",
+  "main": "mongoDbTask.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "run": "nodemon"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
