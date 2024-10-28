@@ -1,6 +1,6 @@
 db.employees.aggregate([
   {
-    //first according to question i sort by the group
+    //according to question sort by the group
     $group: {
       _id: "$department",
       averagePerformanceRating: { $avg: "$performanceRating" },
@@ -11,7 +11,7 @@ db.employees.aggregate([
   //pick the top element
   { $limit: 1 },
 
-  // it project the data on so that we can see the data
+  // project is use to return the specify fields
   {
     $project: {
       _id: 0,
