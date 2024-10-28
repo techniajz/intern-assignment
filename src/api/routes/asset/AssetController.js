@@ -1,4 +1,8 @@
-const Asset = require('../../../../lib/models/models/Asset.model');
+const {
+    models: {
+        Asset
+    },
+} = require('../../../../lib/models');
 const moment = require('moment');
 const { uploadImage } = require('../../../../lib/util');
 var _ = require('lodash');
