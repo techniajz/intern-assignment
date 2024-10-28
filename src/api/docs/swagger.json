@@ -1,0 +1,1430 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Real Estate :: API",
+    "description": "Real Estate API list"
+  },
+  "basePath": "/",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+  
+
+
+
+
+    
+
+
+
+
+
+
+
+
+  },
+  "securityDefinitions": {
+    "api_key": {
+      "type": "apiKey",
+      "name": "api_key",
+      "in": "header"
+    },
+    "dk_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "http://localhost:3122/oauth/authorize",
+      "flow": "implicit",
+      "scopes": {
+        "read:dk": "read your dk",
+        "write:dk": "modify dk in your account"
+      }
+    }
+  },
+  "definitions": {
+    "check_area_code": {
+      "type": "object",
+      "required": [
+        "areaCode",
+        "email",
+        "mobileNumber"
+      ],
+      "properties": {
+        "areaCode": {
+          "type": "string",
+          "description": "Area code",
+          "example": "4444"
+        },
+        "email": {
+          "type": "string",
+          "description": "Email",
+          "example": "jon@yopmail.com"
+        },
+        "mobileNumber": {
+          "type": "string",
+          "description": "Mobile Number",
+          "example": "(987) 321-7896"
+        }
+      }
+    },
+    "apply_job": {
+      "type": "object",
+      "required": [
+        "firstName",
+        "lastName",
+        "email",
+        "state",
+        "mobileNumber",
+        "areaCode"
+      ],
+      "properties": {
+        "firstName": {
+          "type": "string",
+          "description": "first name",
+          "example": "Joe"
+        },
+        "lastName": {
+          "type": "string",
+          "description": "first name",
+          "example": "Hadily"
+        },
+        "email": {
+          "type": "string",
+          "description": "first name",
+          "example": "joeh@yopmail.com"
+        },
+        "mobileNumber": {
+          "type": "string",
+          "description": "first name",
+          "example": "(987) 321-7896"
+        },
+        "areaCode": {
+          "type": "string",
+          "description": "first name",
+          "example": "4444"
+        },
+        "state": {
+          "type": "string",
+          "description": "first name",
+          "example": "5e15b6f7dbc1a60870ed864e"
+        }
+      }
+    },
+    "user_signup": {
+      "type": "object",
+      "required": [
+        "email",
+        "password",
+        "deviceType",
+        "deviceToken"
+      ],
+      "properties": {
+        "user_type": {
+          "type": "string",
+          "example": "test/real"
+         
+        },
+        "user_name": {
+          "type": "string",
+          "example": "kers"
+        },
+        "fisrt_name": {
+          "type": "string",
+          "example": "kers"
+        },
+        "last_name": {
+          "type": "string",
+          "example": "kers"
+        },
+        "mobile": {
+          "type": "string",
+          "example": "1234567890"
+        },
+        
+        "referred_by": {
+          "type": "string",
+          "example": "1x3yv22"
+        },
+        "email": {
+          "type": "string",
+          "example": "kers@yopmail.com"
+        },
+        "password": {
+          "type": "string",
+          "format": "password",
+          "example": "test123"
+        },
+        "confirm_password": {
+          "type": "string",
+          "format": "password",
+          "example": "test123"
+        },
+        "deviceToken": {
+          "type": "String",
+          "example": "fkdkfdkd-2929292929"
+        },
+        "deviceType": {
+          "type": "String",
+          "example": "fkdkfdkd-2929292929"
+        },
+        "deviceId": {
+          "type": "String",
+          "example": "fkdkfdkd-2929292929"
+        }
+      }
+    },
+    "user_profile": {
+      "type": "object",
+      "required": [
+        "_id",
+        "shippingAddress1",
+        "shippingAddress2",
+        "city",
+        "zipCode",
+        "state",
+        "secondaryPhone",
+        "licenseNumber"
+      ],
+      "properties": {
+        "_id": {
+          "type": "string",
+          "example": "5ed660d63bbd282d947af1c6"
+        },
+        "shippingAddress1": {
+          "type": "string",
+          "example": "Avenue street"
+        },
+        "shippingAddress2": {
+          "type": "string",
+          "example": "3 mall"
+        },
+        "state": {
+          "type": "string",
+          "example": "5e15b6f7dbc1a60870ed864e"
+        },
+        "city": {
+          "type": "string",
+          "example": "Florida"
+        },
+        "zipCode": {
+          "type": "string",
+          "example": "123456"
+        },
+        "secondaryPhone": {
+          "type": "string",
+          "example": "(123) 345 7890"
+        },
+        "licenseNumber": {
+          "type": "String",
+          "example": "123Fgj"
+        }
+      }
+    },
+    "verify_otp": {
+      "type": "object",
+      "required": [
+        "token",
+        "otp",
+        "email"
+      ],
+      "properties": {
+        "token": {
+          "type": "string",
+          "description": "Auth token",
+          "example": "5ced3056adc9846820a9d520"
+        },
+        "otp": {
+          "type": "string",
+          "description": "Recieved on submitted mobile number",
+          "example": "1234"
+        },
+        "mobile": {
+          "type": "string",
+          "example": "1234567890"
+        },
+        "email": {
+          "type": "string",
+          "description": "User Email",
+          "example": "abc@email.com"
+        }
+      }
+    },
+    "resend_otp": {
+      "type": "object",
+      "required": [
+        "token",
+        "email"
+      ],
+      "properties": {
+        "token": {
+          "type": "string",
+          "description": "Auth token",
+          "example": "5ced3056adc9846820a9d520"
+        },
+        "email": {
+          "type": "string",
+          "description": "User Email",
+          "example": "abc@email.com"
+        }
+      }
+    },
+    "reset_password": {
+      "type": "object",
+      "required": [
+        "email",
+        "password"
+      ],
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "Email",
+          "example": "abc@email.com"
+        },
+        "password": {
+          "type": "string",
+          "format": "password",
+          "example": "1234"
+        }
+      }
+    },
+    "forgot_password": {
+      "type": "object",
+      "required": [
+        "email"
+      ],
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "test@gmail.com"
+        }
+      }
+    },
+    "select_leagues": {
+      "type": "object",
+      "required": [
+        "game_id"
+      ],
+      "properties": {
+        "game_id": {
+          "type": "string",
+          "description": "game_id",
+          "example": "6257bb84abd1a32cac83916c"
+        }
+      }
+    },
+    "game_filter": {
+      "type": "object",
+      "properties": {
+        "min_entrants": {
+          "type": "number",
+          "description": "min_entrants",
+          "example": 2
+        },
+        "max_entrants": {
+          "type": "number",
+          "description": "max_entrants",
+          "example": 5
+        },
+        "min_buyin": {
+          "type": "number",
+          "description": "min_buyin",
+          "example": 300
+        },
+        "max_buyin": {
+          "type": "number",
+          "description": "max_buyin",
+          "example": 400
+        },
+        "slug": {
+          "type": "string",
+          "description": "slug",
+          "example": "all/league_name"
+        },
+        "sort": {
+          "type": "string",
+          "description": "sort",
+          "example": "entrants/buyin"
+        }
+      }
+    },
+
+    "join_league": {
+      "type": "object",
+      "required": [
+        "team_id"
+      ],
+      "properties": {
+        "team_id": {
+          "type": "string",
+          "description": "team_id",
+          "example": "63187971a6a0773ffc8d25e0"
+        }
+      }
+    },
+    
+
+    "leagues_info": {
+      "type": "object",
+      "required": [
+        "league_id"
+      ],
+      "properties": {
+        "league_id": {
+          "type": "string",
+          "description": "league_id",
+          "example": "62e360f4a42d1a2130484ecd"
+        }
+      }
+    },
+    
+    "select_game_news": {
+      "type": "object",
+      "properties": {
+        "game_id": {
+          "type": "string",
+          "description": "you can find selected games news",
+          "example": "6257bb65abd1a32cac83916b"
+        }
+      }
+    },
+    "like_dislike": {
+      "type": "object",
+      "properties": {
+        "postId": {
+          "type": "string",
+          "description": "Like Dislike post",
+          "example": "62ea538e73e9bd115c1d85ab"
+        }
+      }
+    },
+    "comment": {
+      "type": "object",
+      "properties": {
+        "postId": {
+          "type": "string",
+          "description": "postId",
+          "example": "62ea538e73e9bd115c1d85ab"
+        },
+        "comment": {
+          "type": "string",
+          "description": "comment",
+          "example": "good"
+        }
+      }
+    },
+    "view_comments": {
+      "type": "object",
+      "properties": {
+        "postId": {
+          "type": "string",
+          "description": "postId",
+          "example": "62ea3dad1ad6d713f8d0b8b3"
+        }
+      }
+    },
+
+    "create_poll": {
+      "type": "object",
+      "properties": {
+        "poll_question": {
+          "type": "string",
+          "description": "poll_question",
+          "example": "please select"
+        },
+        "option_first": {
+          "type": "string",
+          "description": "option_first",
+          "example": "pizza"
+        },
+        "option_secound": {
+          "type": "string",
+          "description": "option_secound",
+          "example": "bakers"
+        },
+        "option_third": {
+          "type": "string",
+          "description": "option_third",
+          "example": "french fries"
+        },
+        "option_fourth": {
+          "type": "string",
+          "description": "option_fourth",
+          "example": "samosa"
+        }
+      }
+    },
+
+    
+
+    "filter_news": {
+      "type": "object",
+      "properties": {
+        "league_name": {
+          "type": "string",
+          "description": "NFL",
+          "example": "NFL"
+        }
+      }
+    },
+    
+    "select_joined_league": {
+      "type": "object",
+      "properties": {
+        "draftId": {
+          "type": "string",
+          "description": "62f1f4fc0603fa3dd0c693ce",
+          "example": "62f1f4fc0603fa3dd0c693ce"
+        }
+      }
+    },
+    "selecte_players": {
+      "type": "object",
+      "properties": {
+        "Players_id": {
+          "type": "string",
+          "description": "10395",
+          "example": "10395"
+        },
+        "Team_id": {
+          "type": "string",
+          "description": "62ff2d51ed4b14365c331cee",
+          "example": "62ff2d51ed4b14365c331cee"
+        }
+      }
+    },
+    
+    "general_settings": {
+      "type": "object",
+      "properties": {
+        "league_id": {
+          "type": "string",
+          "description": "league_id",
+          "example": "62e360f4a42d1a2130484ecd",
+          "value":"62e360f4a42d1a2130484ecd"
+        }
+      }
+    },
+    "draft_settings": {
+      "type": "object",
+      "properties": {
+        "league_id": {
+          "type": "string",
+          "description": "league_id",
+          "example": "62e360f4a42d1a2130484ecd",
+          "value":"62e360f4a42d1a2130484ecd"
+        }
+      }
+    },
+    "send_friend_request": {
+      "type": "object",
+      "properties": {
+        "receiver_id": {
+          "type": "string",
+          "description": "receiver_id",
+          "example": "630d8e62f95b093418bf583c",
+          "value":"630d8e62f95b093418bf583c"
+        }
+      }
+    },
+    "request_accept": {
+      "type": "object",
+      "properties": {
+        "sender_id": {
+          "type": "string",
+          "description": "sender_id",
+          "example": "630d8e62f95b093418bf583c",
+          "value":"630d8e62f95b093418bf583c"
+        }
+      }
+    },
+    "request_delete": {
+      "type": "object",
+      "properties": {
+        "sender_id": {
+          "type": "string",
+          "description": "sender_id",
+          "example": "630d8e62f95b093418bf583c",
+          "value":"630d8e62f95b093418bf583c"
+        }
+      }
+    },
+    
+
+    "check_invite": {
+      "type": "object",
+      "properties": {
+        "friend_id": {
+          "type": "string",
+          "description": "friend_id",
+          "example": "630d8e62f95b093418bf5833"
+        },
+        "league_id": {
+          "type": "string",
+          "description": "league_id",
+          "example": "62e360f4a42d1a2130484ecd"
+        },
+        "link": {
+          "type": "string",
+          "description": "link",
+          "example": "https://www.iplt20.com/"
+        }
+      }
+    },
+    
+    "invite_friends": {
+      "type": "array",
+      "items":{
+        "type": "object",
+        "properties":
+        {
+        "friend_id": {
+          "type": "string",
+          "description": "friend_id",
+          "example": "630d8e62f95b093418bf5833"
+        },
+        "league_id": {
+          "type": "string",
+          "description": "league_id",
+          "example": "62e360f4a42d1a2130484ecd"
+        },
+        "link": {
+          "type": "string",
+          "description": "link",
+          "example": "https://www.iplt20.com/"
+        }
+      }
+      }
+    
+    },
+    
+    "inviteToEmail": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "email",
+          "example": "xyz@yopmail.com"
+        }
+      }
+    },
+    
+    "incomingDraftTeam": {
+      "type": "object",
+      "properties": {
+        "league_id": {
+          "type": "string",
+          "description": "league_id",
+          "example": "62e360f4a42d1a2130484ecd"
+        }
+      }
+    },
+    "TeamPlayers": {
+      "type": "object",
+      "properties": {
+        "team_id": {
+          "type": "string",
+          "description": "team_id",
+          "example": "63187971a6a0773ffc8d25e0"
+        }
+      }
+    },
+
+
+
+    "invite_lead": {
+      "type": "object",
+      "required": [
+        "email"
+      ],
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "Email of lead",
+          "example": "avi@yopmail.com"
+        }
+      }
+    },
+    "upload_profile": {
+      "type": "object",
+      "properties": {
+        "profileImage": {
+          "type": "string",
+          "description": "It is base64 string",
+          "example": "data:image/jpeg;base64"
+        },
+        "imageName": {
+          "type": "string",
+          "description": "It is base64 string",
+          "example": "user.jpg"
+        }
+      }
+    },
+    "fetch_alert": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "object",
+          "description": "location",
+          "example": {
+            "coordinates": [
+              26.895471778781342,
+              75.82682314539868
+            ]
+          }
+        }
+      }
+    },
+    "alert_id": {
+      "type": "object",
+      "properties": {
+        "alertid": {
+          "type": "string",
+          "description": "Enter your alert_id",
+          "example": "6151706f55e6da07e83dd543"
+        }
+      }
+    },
+    "change_password": {
+      "type": "object",
+      "required": [
+        "currentPassword",
+        "newPassword"
+      ],
+      "properties": {
+        "currentPassword": {
+          "type": "string",
+          "description": "Current password",
+          "format": "password",
+          "example": "12345"
+        },
+        "newPassword": {
+          "type": "string",
+          "description": "Current password",
+          "format": "password",
+          "example": "123456"
+        }
+      }
+    },
+    "update_profile": {
+      "type": "object",
+      "required": [
+        "email",
+        "name"
+      ],
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "email",
+          "example": "kers@yopmail.com"
+        },
+        "name": {
+          "type": "string",
+          "description": "name",
+          "example": "Aal"
+        }
+      }
+    },
+    "notify_users": {
+      "type": "object",
+      "required": [
+        "user",
+        "alertid"
+      ],
+      "properties": {
+        "user": {
+          "type": "array",
+          "description": "user",
+          "example": [
+            "6148258c683c0f30ac638b89",
+            "614b1954388c9724b8b39ca2"
+          ]
+        },
+        "alertid": {
+          "type": "string",
+          "description": "alertid",
+          "example": "6155ac9e27f6f334b41b3095"
+        }
+      }
+    },
+    "add_alert": {
+      "type": "object",
+      "required": [
+        "user",
+        "address",
+        "alertid"
+      ],
+      "properties": {
+        "location": {
+          "type": "object",
+          "description": "lat long",
+          "example": {
+            "coordinates": [
+              26.90840087854311,
+              75.74327338614565
+            ]
+          }
+        },
+        "alertLocation": {
+          "type": "object",
+          "description": "lat long",
+          "example": {
+            "coordinates": [
+              26.90840087854311,
+              75.74327338614565
+            ]
+          }
+        },
+        "alertType": {
+          "type": "string",
+          "description": "alertType",
+          "example": "Fire"
+        },
+        "address": {
+          "type": "string",
+          "description": "address",
+          "example": "1234 street"
+        },
+        "confirmedby": {
+          "type": "number",
+          "description": "confirmedby",
+          "example": "3"
+        },
+        "msg": {
+          "type": "string",
+          "description": "msg",
+          "example": "The road is blocked due to heavy water spill"
+        },
+        "image": {
+          "type": "string",
+          "description": "image",
+          "example": "image/incident.jpg"
+        }
+      }
+    },
+    "update_address": {
+      "type": "object",
+      "required": [
+        "shippingAddress",
+        "city",
+        "zipCode",
+        "state",
+        "primaryNumber",
+        "ownerName"
+      ],
+      "properties": {
+        "shippingAddress": {
+          "type": "string",
+          "description": "Shipping Address",
+          "example": "A-32 avenue"
+        },
+        "city": {
+          "type": "string",
+          "description": "City",
+          "example": "Aal"
+        },
+        "zipCode": {
+          "type": "string",
+          "description": "zipCode",
+          "example": "123456"
+        },
+        "primaryNumber": {
+          "type": "string",
+          "description": "primaryNumber",
+          "example": "(123) 456 7890"
+        },
+        "ownerName": {
+          "type": "string",
+          "description": "ownerName",
+          "example": "Mark"
+        }
+      }
+    },
+    "product_list": {
+      "type": "object",
+      "required": [
+        "categoryId"
+      ],
+      "properties": {
+        "categoryId": {
+          "type": "string",
+          "description": "Category of product",
+          "example": "5ee380767bb663245172f09e"
+        },
+        "subCatId": {
+          "type": "string",
+          "description": "Sub category of product",
+          "example": "5ee3809b7bb663245172f0a5"
+        },
+        "vendorIds": {
+          "type": "array",
+          "description": "array of vendors whose product need to search",
+          "example": [
+            "5eea130f95e1160ce0f2ae22"
+          ]
+        },
+        "limit": {
+          "type": "number",
+          "description": "Limit of product to fetch",
+          "example": 10
+        },
+        "offset": {
+          "type": "number",
+          "description": "offset of product to fetch",
+          "example": 0
+        }
+      }
+    },
+    "associate_practice": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "Email of associate practice",
+          "example": "avik12@yopmail.com"
+        }
+      }
+    },
+    "my-practices": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "Email of associate practice",
+          "example": "avik12@yopmail.com"
+        }
+      }
+    },
+    "add_cart": {
+      "type": "object",
+      "required": [
+        "product"
+      ],
+      "properties": {
+        "product": {
+          "type": "array",
+          "description": "Array of products ",
+          "example": [
+            {
+              "productId": "5eeb27df089b1e1294fbb363",
+              "vendorId": "5eea130f95e1160ce0f2ae22",
+              "quantity": 3
+            }
+          ]
+        }
+      }
+    },
+    "seat_availbility": {
+      "properties": {
+        "availbility": {
+          "type": "string",
+          "description": "Set availbility of product",
+          "example": "no_stock"
+        },
+        "productVendorId": {
+          "type": "string",
+          "description": "This is product vendor id",
+          "example": "5efdb1e9850a4d40067326fd"
+        }
+      }
+    },
+    "offer_price": {
+      "properties": {
+        "offerPrice": {
+          "type": "number",
+          "description": "Set offer price per unit of product",
+          "example": 5
+        },
+        "productVendorId": {
+          "type": "string",
+          "description": "This is product vendor id",
+          "example": "5efdb1e9850a4d40067326fd"
+        }
+      }
+    },
+    "order_history": {
+      "type": "object",
+      "properties": {
+        "limit": {
+          "type": "number",
+          "description": "Limit ",
+          "example": 10
+        },
+        "offset": {
+          "type": "number",
+          "description": "offset of order to fetch",
+          "example": 0
+        },
+        "fromDate": {
+          "type": "string",
+          "description": "fromDate for order history",
+          "example": "22/06/2020"
+        },
+        "toDate": {
+          "type": "string",
+          "description": "toDate for order history",
+          "example": "03/07/2020"
+        },
+        "practiceId": {
+          "type": "string",
+          "description": "Add practice id in case of concierge type user",
+          "example": "5ec3902d2fe43e28242b7a11"
+        }
+      }
+    },
+    "order_total": {
+      "type": "object",
+      "properties": {
+        "limit": {
+          "type": "number",
+          "description": "Limit ",
+          "example": 10
+        },
+        "offset": {
+          "type": "number",
+          "description": "offset of order to fetch",
+          "example": 0
+        },
+        "fromDate": {
+          "type": "string",
+          "description": "fromDate for order history",
+          "example": "22/06/2020"
+        },
+        "toDate": {
+          "type": "string",
+          "description": "toDate for order history",
+          "example": "03/07/2020"
+        },
+        "practiceId": {
+          "type": "string",
+          "description": "Add practice id in case of concierge type user",
+          "example": "5ec3902d2fe43e28242b7a11"
+        }
+      }
+    },
+    "order_detail": {
+      "type": "object",
+      "properties": {
+        "limit": {
+          "type": "number",
+          "description": "Limit ",
+          "example": 10
+        },
+        "offset": {
+          "type": "number",
+          "description": "offset of order to fetch",
+          "example": 0
+        },
+        "fromDate": {
+          "type": "string",
+          "description": "fromDate for order history",
+          "example": 0
+        },
+        "toDate": {
+          "type": "string",
+          "description": "toDate for order history",
+          "example": 0
+        }
+      }
+    },
+    "place_order": {
+      "type": "object",
+      "properties": {
+        "products": {
+          "type": "array",
+          "description": "Array of products ",
+          "example": [
+            {
+              "productId": "5eeb27df089b1e1294fbb361",
+              "vendorId": "5eea130f95e1160ce0f2ae22",
+              "quantity": 6,
+              "pricePerPiece": 3,
+              "buyingDiscount": 1,
+              "subCategoryId": "5ea03420180fc1192024739f"
+            }
+          ]
+        },
+        "shippingAddress": {
+          "type": "string",
+          "description": "Add shipping address",
+          "example": "A-23 avenue street,calfornia,united state"
+        },
+        "orderItemCount": {
+          "type": "number",
+          "description": "Total number of item in order",
+          "example": 3
+        },
+        "practiceId": {
+          "type": "string",
+          "description": "Total number of item in order",
+          "example": "5ed8e07cc9e61918a0572ffb"
+        }
+      }
+    },
+    "add_msrp": {
+      "type": "object",
+      "required": [
+        "id",
+        "price"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Product Id"
+        },
+        "price": {
+          "type": "number",
+          "description": "Product price"
+        }
+      }
+    },
+    "edit_vendor": {
+      "type": "object",
+      "required": [
+        "business_name",
+        "owner_name"
+      ],
+      "properties": {
+        "business_name": {
+          "type": "string",
+          "description": "business name"
+        },
+        "owner_name": {
+          "type": "string",
+          "description": "owner name"
+        }
+      }
+    },
+    "upload_product_csv": {
+      "type": "file"
+    },
+    "upload_tech_sheet": {
+      "type": "file"
+    },
+    "tech_sheet": {
+      "type": "object",
+      "required": [
+        "fileName",
+        "productId"
+      ],
+      "properties": {
+        "fileName": {
+          "type": "string",
+          "description": "file name",
+          "example": "5eea130f95e1160ce0f2ae22.csv"
+        },
+        "productId": {
+          "type": "string",
+          "description": "product id",
+          "example": "5eeb27df089b1e1294fbb364"
+        }
+      }
+    },
+    "add_product": {
+      "type": "object",
+      "properties": {
+        "projectId": {
+          "type": "string",
+          "description": "Project id",
+          "example": "5eeb27df089b1e1294fbb363"
+        }
+      }
+    },
+    "check_out": {
+      "type": "object",
+      "properties": {
+        "example": [
+          {
+            "productId": "5eeb27df089b1e1294fbb363",
+            "quantity": 3
+          }
+        ]
+      }
+    },
+    "clear_cart": {
+      "type": "object",
+      "properties": {
+        "example": [
+          {
+            "productId": "5eeb27df089b1e1294fbb363"
+          }
+        ]
+      }
+    },
+    "resendOtp": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "5ced3056adc9846820a9d520",
+          "description": "User id recieved in previous step"
+        }
+      }
+    },
+    "login": {
+      "type": "object",
+      "required": [
+        "email"
+      ],
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "ravs601@yopmail.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "12345"
+        },
+        "deviceId": {
+          "type": "string",
+          "example": "fkdkfdkd-2929292929"
+        },
+        "deviceToken": {
+          "type": "string",
+          "example": "fkdkfdkd-2929292929"
+        },
+        "deviceType": {
+          "type": "string",
+          "example": "fkdkfdkd-2929292929"
+        }
+      }
+    },
+    "logout": {
+      "type": "object",
+      "required": [
+        "device_token"
+      ],
+      "properties": {
+        "device_token": {
+          "type": "string",
+          "example": "device-token"
+        }
+      }
+    },
+    "update_concierge": {
+      "type": "object",
+      "required": [
+        "firstName",
+        "lastName"
+      ],
+      "properties": {
+        "firstName": {
+          "type": "string",
+          "description": "First Name",
+          "example": "Jon"
+        },
+        "lastName": {
+          "type": "string",
+          "description": "Last Name",
+          "example": "Bev"
+        }
+      }
+    },
+    "order_item_list": {
+      "type": "object",
+      "required": [
+        "practiceId"
+      ],
+      "properties": {
+        "practiceId": {
+          "type": "string",
+          "description": "Practice id for selected practice",
+          "example": "5ed8e07cc9e61918a0572ffb"
+        },
+        "limit": {
+          "type": "Number",
+          "description": "Limit",
+          "example": 10
+        },
+        "offset": {
+          "type": "Number",
+          "description": "Offset",
+          "example": 0
+        },
+        "searchName": {
+          "type": "String",
+          "description": "search order item",
+          "example": "Vicks"
+        }
+      }
+    },
+    "product_search": {
+      "type": "object",
+      "required": [
+        "practiceId",
+        "name"
+      ],
+      "properties": {
+        "practiceId": {
+          "type": "string",
+          "description": "Practice id for selected practice",
+          "example": "5ed8e07cc9e61918a0572ffb"
+        },
+        "name": {
+          "type": "string",
+          "description": "Product name for search",
+          "example": "Product 1"
+        },
+        "limit": {
+          "type": "Number",
+          "description": "Limit",
+          "example": 10
+        },
+        "offset": {
+          "type": "Number",
+          "description": "Offset",
+          "example": 0
+        }
+      }
+    },
+    "update_discount": {
+      "type": "object",
+      "required": [
+        "categoryId",
+        "buyinggroupId",
+        "discount"
+      ],
+      "properties": {
+        "categoryId": {
+          "type": "string",
+          "description": "CategoryId",
+          "example": "5ee3809b7bb663245172f0a4"
+        },
+        "buyinggroupId": {
+          "type": "string",
+          "description": "buyingGroup",
+          "example": "5efb0fbd4d97775fb17a63a9"
+        },
+        "discount": {
+          "type": "Number",
+          "description": "discount",
+          "example": 10
+        }
+      }
+    },
+    "alternate_product": {
+      "type": "object",
+      "required": [
+        "practiceId",
+        "productId"
+      ],
+      "properties": {
+        "productId": {
+          "type": "array",
+          "description": "Array of products ",
+          "example": [
+            {
+              "productId": "5eeb27df089b1e1294fbb361"
+            }
+          ]
+        },
+        "practiceId": {
+          "type": "string",
+          "description": "practiceId",
+          "example": "5ed8e07cc9e61918a0572ffb"
+        }
+      }
+    },
+    "responsesOk": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object"
+        }
+      }
+    },
+    "responsesError": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "error": {
+          "type": "object"
+        }
+      }
+    },
+    "loginResponseOk": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "example": "VERIFY_OTP",
+          "description": "If account not verified then rediect user to otp screen and enter OTP send to his phone number"
+        },
+        "code": {
+          "type": "string"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object"
+        }
+      }
+    }
+  },
+  "parameters": {
+    "HeaderVersion": {
+      "name": "X-real-estate-Version",
+      "in": "header",
+      "description": "X-real-estate-Version",
+      "required": true,
+      "type": "string",
+      "default": "1.0.0"
+    },
+    "HeaderLanguage": {
+      "name": "Accept-Language",
+      "in": "header",
+      "description": "Accept-Language",
+      "required": true,
+      "type": "string",
+      "default": "en"
+    },
+    "HeaderAuth": {
+      "name": "Authorization",
+      "in": "header",
+      "description": "Authorization",
+      "required": true,
+      "type": "string"
+  },
+    "HeaderPlatform": {
+      "name": "X-real-estate-Platform",
+      "in": "header",
+      "description": "android or ios or web",
+      "required": true,
+      "type": "string",
+      "default": "android"
+    },
+    "HeaderOptionalAuth": {
+      "name": "Authorization",
+      "in": "header",
+      "description": "Authorization",
+      "type": "string"
+    }
+  }
+}

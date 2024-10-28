@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Real Estate Listing</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #efc9c3;
+    }
+
+    .listing-container {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    .back-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      padding: 8px 12px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    strong {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <body>
+
+    <div class="listing-container">
+      <button class="back-button" onclick="goBack()">Back</button>
+      <h1>Lead E-Brochure</h1>
+      <ul>
+        <li><strong>Name:</strong><%=shareProject?.name%></li>
+        <li><strong>Location URL:</strong> <a href="<%=shareProject.location_URL%>" target="_blank">View Location</a></li>
+        <li><strong>Price Range:</strong> <%=shareProject?.minPrice%> - <%=shareProject?.maxPrice%></li>
+        <li><strong>Property Size:</strong> <%=shareProject?.size%></li>
+        <li><strong>Year Built:</strong> <%=shareProject?.yearBuilt%></li>
+        <li><strong>Owner of Property:</strong> <%=shareProject?.OwnerOfProperty%></li>
+        <li><strong>Nearby:</strong><%=shareProject?.nearby%></li>
+        <li><strong>Certifications:</strong><%=shareProject?.certifications%></li>
+        <li><strong>Contact Person:</strong><%=shareProject?.contactPerson%></li>
+        <li><strong>Contact Number:</strong><%=shareProject?.contactNumber%></li>
+        <li><strong>Description:</strong><%=shareProject?.description%></li>
+        <li><strong>Amenities:</strong><%=shareProject?.amenities%></li>
+        <li><strong>Notes:</strong><%=shareProject?.notes%></li>
+        <li><strong>Lead Name:</strong><%= shareProject && shareProject.leadId && shareProject.leadId.name ? shareProject.leadId.name : "" %>
+        </li>
+        <li><strong>Project Name:</strong><%=shareProject && shareProject.projectId && shareProject.projectId.name ? shareProject.projectId.name : ""%></li>
+        <li><strong>Lead Name:</strong><%=shareProject && shareProject.leadId && shareProject.leadId.name ? shareProject.leadId.name : ""%></li>
+        <% if (proDocument && proDocument.length > 0) { %>
+          <% proDocument.forEach((i) => { %>
+            <% if (i.type === 'pdf') { %>
+              <div>
+                <a href="https://real-state-staging.s3.ap-south-1.amazonaws.com/<%= i.file_ %>" target="_blank">
+                  <li><strong>PDF: </strong><%= i.file_ %></li>
+                </a>
+              </div>
+            <% } else if (i.type === 'youtube') { %>
+              <div>
+                <a href="<%= i.file_ %>" target="_blank">
+                  <li><strong>Youtube: </strong><%= i.file_ %></li>
+                </a>
+              </div>
+            <% } %>
+          <% }) %>
+        <% } %>
+      </ul>
+    </div>
+  
+    <script>
+      function goBack() {
+        window.history.back();
+      }
+    </script>
+  </body>
+</html>
+
+
+

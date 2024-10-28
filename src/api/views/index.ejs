@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Nirman real estate</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/eed6989a06.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="assets/realstate.css">
+    <script src="assets/js.js"></script>
+    <style>
+        * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    margin: 0px auto;
+    height: 100%;
+    width: 100%;
+    max-width: 680px;
+}
+
+.logo {
+    border-radius: 50%;
+    width: 96px;
+    height: 96px;
+    display: block;
+    object-fit: contain;
+    object-position: initial;
+    filter: none;
+    background-color: black;
+}
+
+.logo img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.h3 {
+    margin: 0px;
+    color: rgb(0, 0, 0);
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.5;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-top: 13px;
+    margin-bottom: 25px;
+}
+
+.menus .box {
+    z-index: 0;
+    margin: 0 8px 16px 8px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: rgb(0, 0, 0);
+    transition: transform 0.15s cubic-bezier(0, 0.2, 0.5, 3) 0s;
+    box-shadow: rgba(10, 11, 13, 0.08) 0px 2px 4px 0px;
+    border-radius: 4px;
+    transition: .1s;
+}
+.menus .box:hover {
+    transform: scale(1.1);
+}
+
+.box a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px 2px;
+}
+.box a:focus {
+    background-color: #008cd1;
+}
+
+.box h5 {
+    padding: 0px;
+    margin: 0px;
+    font-weight: 500;
+    font-size: 15px;
+    color: rgb(0, 0, 0, 0.9);
+}
+
+.box img {
+    border-radius: 5px;
+    padding: 2px;
+}
+.box i {
+    padding-right: 20px;
+    color: rgb(0, 0, 0);
+}
+
+    </style>
+</head>
+
+<body style="background: linear-gradient(to left, #f1b6b9, white 172%, #fad6d8);">
+    <div>
+        <div class="container" style="margin-top: 65px;">
+            <!-- fixed button -->
+            <div class="d-flex flex-column align-items-center">
+                <!-- <div class="logo">
+                    <img src="<%= BASE_URL %>/img/media/png logo 1.png" alt="" class="img-responsive">
+                </div> -->
+                <div>
+                    <h3 class="h3">Nirman Real Estate</h3>
+                </div>
+            </div>
+            <div class="menus">
+                <div class="box">
+                    <a href="<%=BASE_URL%>/Lead/lead_brochure_Page?leadId=<%=leadId%>">
+                        <img src="<%= BASE_URL %>/img/media/realState.webp" alt=""
+                            style="width: 50px;">
+                        <h5>Info</h5>
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="menus">
+                <div class="box">
+                    <a href="<%=shareProject.location_URL%>" target="_blank">
+                        <img src="<%= BASE_URL %>/img/media/realState.webp" alt="" style="width: 50px;">
+                        <h5>Location</h5>
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="menus">
+                <div class="box">
+                    <a href="<%=BASE_URL%>/Lead/lead_gallery_Page?leadId=<%=leadId%>">
+                        <img src="<%= BASE_URL %>/img/media/realState.webp" alt=""
+                            style="width: 50px;">
+                        <h5>Gallery</h5>
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="menus">
+                <div class="box">
+                    <a href="<%=BASE_URL%>/Lead/lead_video?leadId=<%=leadId%>">
+                        <img src="<%= BASE_URL %>/img/media/realState.webp" alt=""
+                            style="width: 50px;">
+                        <h5>Video</h5>
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="menus">
+                <div class="box">
+                    <% let pdfFound = false; %>
+                    <% if (proDocument && proDocument.length > 0) { %>
+                        <% proDocument.forEach((i) => { %>
+                            <% if (i.type === 'pdf' && !pdfFound) { %>
+                                <% pdfFound = true; %>
+                                <div>
+                                    <a href="https://real-state-staging.s3.ap-south-1.amazonaws.com/<%= i.file_ %>" target="_blank">
+                                    </a>
+                                </div>
+                            <% } %>
+                        <% }) %>
+                    <% } %>
+                    <a <% if (pdfFound) { %> href="https://real-state-staging.s3.ap-south-1.amazonaws.com/<%= proDocument.find(i=> i.type
+                            === 'pdf').file_ %>" target="_blank" <% } %>>
+                        <img src="<%= BASE_URL %>/img/media/realState.webp" alt="" style="width: 50px;">
+                        <h5>Document</h5>
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

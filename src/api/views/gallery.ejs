@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+  <title>Nirman Real Estate</title>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap-grid.min.css"
+    integrity="sha512-Xj2sd25G+JgJYwo0cvlGWXoUekbLg5WvW+VbItCMdXrDoZRWcS/d40ieFHu77vP0dF5PK+cX6TIp+DsPfZomhw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    .heading {
+      min-height: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .back-button {
+      position: absolute;
+      top: 25px;
+      left: 20px;
+      padding: 8px 12px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .website-content p {
+      max-width: 800px;
+      margin: auto;
+      margin-bottom: 20px;
+      font-size: 15px;
+      letter-spacing: 0.2px;
+      color: #0a0303;
+      line-height: 1.65;
+      padding: 0 20px;
+    }
+
+    body {
+      background-image: linear-gradient(180deg, #efc9c3, #efc9c3);
+      color: #070505;
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+    }
+
+    .main-section .container {
+      min-height: 100vh;
+    }
+
+    footer {
+      text-align: center;
+      background-color: darkslategrey;
+    }
+
+    footer p {
+      padding: 20px;
+      color: #140d0d;
+      font-size: 12px;
+      margin: 0;
+    }
+
+    .swiper-container {
+      width: 100%;
+      margin: 20px auto;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #efc9c3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 8px;
+    }
+
+    .swiper-slide img {
+      max-width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .swiper-pagination {
+      position: relative;
+      bottom: 10px;
+    }
+
+    .swiper-pagination-bullet {
+      width: 10px;
+      height: 10px;
+      background: #888;
+      opacity: 0.7;
+      border-radius: 10px;
+      display: inline-block;
+      margin: 0 5px;
+      cursor: pointer;
+    }
+    .swiper-pagination-bullet-active {
+      background: #333;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="listing-container">
+    <button class="back-button" onclick="goBack()">Back</button>
+    <h1>Gallery</h1>
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <% proDocument.forEach((i)=> { %>
+          <% if (i.type==='image' ) { %>
+            <div class="swiper-slide">
+              <div class="logo">
+                <img src="https://real-state-staging.s3.ap-south-1.amazonaws.com/<%= i.file_ %>"
+                 alt=""
+                 class="img-responsive"
+                onclick="openImageInNewTab('https://real-state-staging.s3.ap-south-1.amazonaws.com/<%= i.file_ %>')">
+              </div>
+            </div>
+            <% } %>
+              <% }) %>
+      </div>
+      <!-- Add pagination -->
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var swiper = new Swiper('.swiper-container', {
+        loop: true,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+      });
+    });
+
+    function goBack() {
+      window.history.back();
+    }
+  </script>
+
+<script>
+  function openImageInNewTab(imageUrl) {
+    window.open(imageUrl, '_blank');
+  }
+</script>
+</body>
+</html>

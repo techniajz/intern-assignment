@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+  <title>Nirman Real Estate</title>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap-grid.min.css"
+    integrity="sha512-Xj2sd25G+JgJYwo0cvlGWXoUekbLg5WvW+VbItCMdXrDoZRWcS/d40ieFHu77vP0dF5PK+cX6TIp+DsPfZomhw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+
+  <style>
+    .heading {
+      min-height: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+  .thumbnail {
+    max-width: 100%;
+    height: auto;
+    width: 500px; /* Set your desired width for the thumbnails */
+    height: 200px; /* Set your desired height for the thumbnails */
+    cursor: pointer;
+  }
+
+    .back-button {
+      position: absolute;
+      top: 25px;
+      left: 20px;
+      padding: 8px 12px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .website-content p {
+      max-width: 800px;
+      margin: auto;
+      margin-bottom: 20px;
+      font-size: 15px;
+      letter-spacing: 0.2px;
+      color: #0a0303;
+      line-height: 1.65;
+      padding: 0 20px;
+    }
+
+    body {
+      background-image: linear-gradient(180deg, #efc9c3, #efc9c3);
+      color: #070505;
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+    }
+
+    .main-section .container {
+      min-height: 100vh;
+    }
+
+    footer {
+      text-align: center;
+      background-color: darkslategrey;
+    }
+
+    footer p {
+      padding: 20px;
+      color: #140d0d;
+      font-size: 12px;
+      margin: 0;
+    }
+
+    .swiper-container {
+      width: 100%;
+      margin: 20px auto;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    strong {
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="listing-container">
+    <button class="back-button" onclick="goBack()">Back</button>
+    <h1>Videos</h1>
+    <ul>
+      <!-- <% let thumbnailIndex = 0; %> -->
+      <% if (proDocument && proDocument.length > 0) { %>
+        <% proDocument.forEach((i) => { %>
+          <% if (i.type === 'youtube') { %>
+            <% const videoId = extractVideoId(i.file_); %>
+    
+            <div>
+              <a href="<%= i.file_ %>" target="_blank"></a>
+            </div>
+    
+            <% const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/${thumbnailIndex}.jpg`; %>
+    
+            <a href="<%= i.file_ %>" target="_blank">
+              <img class="thumbnail" src="<%= thumbnailUrl %>" alt="Thumbnail" onclick="openVideo('<%= i.file_ %>')">
+            </a>
+    
+            <% thumbnailIndex++; %>
+          <% } %>
+        <% }) %>
+      <% } %>
+    
+      <% function extractVideoId(url) { %>
+        <% const videoIdMatch = url.match(/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/); %>
+        <% return videoIdMatch ? videoIdMatch[1] : null; %>
+      <% } %>
+    </ul>
+  </div>
+
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+  </script>
+</body>
+
+</html>
