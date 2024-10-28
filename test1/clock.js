@@ -1,7 +1,6 @@
 function clock(time){
     let [hours,minutes] = time.split(":").map(Number)
     let period = hours>=12 ? "PM" : "AM" ;
-    
 
     hours = hours%12 || 12;
         
