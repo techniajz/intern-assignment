@@ -36,3 +36,16 @@ db.employees.aggregate([
     _id : "$performanceRating",
     average : {$avg : "$salary"}
  }
+
+ //bonus task 
+
+ db.employees.aggregate([
+    {
+        $group: {
+            _id: "$department",
+            total:{ $avg: "$performanceRating"},
+            employees : {$push :  "$name"},
+        },
+    },{$sort: { total: -1 }},{$limit: 1}
+])
+
