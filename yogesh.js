@@ -181,3 +181,80 @@ db.employees.aggregate([
       $limit :1
       }
       ]);
+
+      /// salariews field
+
+      db.salaries.insertMany([
+        {
+        emp_id: ObjectId("672088bbb5e13de23d8048d3"), // Replace with the actual employee _id
+        salary: 70000,
+        month: 1,
+        year :2024 // Example salary
+        // Add other fields as needed
+      },
+        {
+        emp_id: ObjectId("672088bbb5e13de23d8048d3"), // Replace with the actual employee _id
+        salary: 70000,
+        month: 2,
+        year :2024 // Example salary
+        // Add other fields as needed
+      },
+        {
+        emp_id: ObjectId("672088bbb5e13de23d8048d3"), // Replace with the actual employee _id
+        salary: 70000,
+        month: 3,
+        year :2024 // Example salary
+        // Add other fields as needed
+      },
+        {
+        emp_id: ObjectId("672088bbb5e13de23d8048d3"), // Replace with the actual employee _id
+        salary: 70000,
+        month: 4,
+        year :2024 // Example salary
+        // Add other fields as needed
+      },
+        {
+        emp_id: ObjectId("672088bbb5e13de23d8048d3"), // Replace with the actual employee _id
+        salary: 70000,
+        month: 5,
+        year :2024 // Example salary
+        // Add other fields as needed
+      },
+        {
+        emp_id: ObjectId("672088bbb5e13de23d8048d3"), // Replace with the actual employee _id
+        salary: 70000,
+        month: 6,
+        year :2024 // Example salary
+        // Add other fields as needed
+      },
+        {
+        emp_id: ObjectId("672088bbb5e13de23d8048d3"), // Replace with the actual employee _id
+        salary: 70000,
+        month: 7,
+        year :2024 // Example salary
+        // Add other fields as needed
+      },
+        {
+        emp_id: ObjectId("672088bbb5e13de23d8048d3"), // Replace with the actual employee _id
+        salary: 70000,
+        month: 8,
+        year :2024 // Example salary
+        // Add other fields as needed
+      },
+        {
+        emp_id: ObjectId("672088bbb5e13de23d8048d3"), // Replace with the actual employee _id
+        salary: 70000,
+        month: 9,
+        year :2024 // Example salary
+        // Add other fields as needed
+      },
+        {
+        emp_id: ObjectId("672088bbb5e13de23d8048d3"), // Replace with the actual employee _id
+        salary: 70000,
+        month: 10,
+        year :2024 // Example salary
+        // Add other fields as needed
+      },
+      
+
+    ])
