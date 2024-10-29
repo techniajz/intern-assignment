@@ -1,0 +1,10 @@
+let str = "my_name_is_xyz";
+let strArr = str.split("_");
+let first = strArr[0];
+let firstWord= first.split("");
+let firstLetter = firstWord[0].toUpperCase();
+let newFirstWord = firstLetter + firstWord[1];
+strArr.shift();
+strArr.unshift(newFirstWord);
+let newString = strArr.join("_");
+console.log(newString);
