@@ -13,7 +13,6 @@ app.use((err, req, res, next) => {
         return next(err)
       }
     return res.status(err.status || 500).send({
-       
         success: false,
         data: [],
         message: req.__('GENERAL_SERVER_ERROR'),

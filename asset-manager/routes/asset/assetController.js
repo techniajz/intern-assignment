@@ -103,3 +103,22 @@ exports.deleteMultipleAssets = async (req, res, next ) => {
         return next(error);
     }
 };
+
+
+exports.getAssetsByPage = async (req,res,next ) =>{
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+    const startIndex = (page - 1) * limit;
+    const total = await Asset.countDocuments();
+
+
+    const assets = await Asset.find().skip(startIndex).limit(limit);
+    res.json({
+        page,
+        limit,
+        total,
+        pages: Math.ceil(total / limit),
+        data: assets
+    });
+
+}
