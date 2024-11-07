@@ -95,11 +95,11 @@ exports.deleteMultipleAssets = async (req, res, next ) => {
         const result = await Asset.deleteMany({ _id: { $in: ids } });
 
         if (result.deletedCount === 0) {
-            return res.json({ message: 'No products found for the provided IDs.' });
+            return res.json({ message: 'No Assets found for the provided IDs.' });
         }
-        res.json({ message: 'Products deleted successfully', });
+        res.json({ message: 'Assets deleted successfully', });
     } catch (error) {
-        reset.json({ message: 'Error deleting products', error: error.message });
+        reset.json({ message: 'Error deleting Assets', error: error.message });
         return next(error);
     }
 };
@@ -113,6 +113,9 @@ exports.getAssetsByPage = async (req,res,next ) =>{
 
 
     const assets = await Asset.find().skip(startIndex).limit(limit);
+    
+ try {
+    
     res.json({
         page,
         limit,
@@ -121,4 +124,10 @@ exports.getAssetsByPage = async (req,res,next ) =>{
         data: assets
     });
 
+ } catch (error) {
+    reset.json({ message: 'Error fetching Assets', error: error.message });
+    next(error)
+    
+ }
+    
 }
