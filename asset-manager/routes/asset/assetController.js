@@ -135,35 +135,73 @@ exports.getAssetsByPage = async (req, res, next) => {
 
 exports.totalAssetsCount = async (req, res, next) => {
 
-    const [{ total, assigned, unassigned }] =  await Asset.aggregate([
-            {
-              $group: {
+    const [{ total, assigned, unassigned }] = await Asset.aggregate([
+        {
+            $group: {
                 _id: null,
                 total: { $sum: 1 },
-                assigned: { 
-                  $sum: {
-                     $cond: { if: { $eq : ["$assignedTo", null] }, then: 0, else: 1 }
-                  } 
+                assigned: {
+                    $sum: {
+                        $cond: { if: { $eq: ["$assignedTo", null] }, then: 0, else: 1 }
+                    }
                 },
-                unassigned: { 
-                  $sum: { 
-                    $cond: { if: { $eq : ["$assignedTo", null] }, then: 1, else: 0 }
-                  }
+                unassigned: {
+                    $sum: {
+                        $cond: { if: { $eq: ["$assignedTo", null] }, then: 1, else: 0 }
+                    }
                 },
-              },
             },
-            { $project: { _id: 0, total: 1, assigned: 1, unassigned: 1 } },
-          ])
+        },
+        { $project: { _id: 0, total: 1, assigned: 1, unassigned: 1 } },
+    ])
 
     try {
-    res.json({
-        total,
-        assigned,
-        unassigned
-    });
-} catch (error) {
-    reset.json({ message: 'Error fetching Assets', error: error.message });
-    next(error)
+        res.json({
+            total,
+            assigned,
+            unassigned
+        });
+    } catch (error) {
+        reset.json({ message: 'Error fetching Assets', error: error.message });
+        next(error)
 
+    }
 }
+
+
+
+
+// exports.bulkInsert = async (req, res, next) => {
+   
+//     // const set = parseInt(req.query.set);
+//     // totalBatch = req.query.totalBatch || 1;
+//     bulkData = [];
+//     batch = req.query.batch;
+    
+//     for (i = 1; i <= 1000; i++) {
+//         bulkData.push({
+//             name: "tv" + ((batch*1000)+i),
+//             description: "43 inch, serial number- " + ((batch*1000)+i)
+//         })
+//     }
+//     await Asset.insertMany(bulkData)
+//     res.json(bulkData)
+// }
+
+exports.bulkInsert = async (req, res, next) => {
+   
+    // const set = parseInt(req.query.set);
+    // totalBatch = req.query.totalBatch || 1;
+
+ for (j = 1; j <= 1000; j++){
+    bulkData = [];
+    for (i = 1; i <= 1000; i++) {
+        bulkData.push({
+            name: "tv" + i+j,
+            description: "43 inch, serial number- " +i+j
+        })
+    }
+    await Asset.insertMany(bulkData)
+}
+    res.status(200).send("done")
 }
