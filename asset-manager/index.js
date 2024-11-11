@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const userRoutes = require('./routes/user/userRoutes');
 const assetRoutes = require('./routes/asset/assetRoutes');
+const multer = require('multer');
 const app = express();
 // Middleware
 app.use(express.json());
@@ -18,6 +19,14 @@ app.use((err, req, res, next) => {
         message: req.__('GENERAL_SERVER_ERROR'),
     });
 });
+
+app.use((err, req, res, next) => {
+    if (err instanceof multer.MulterError && err.code === 'LIMIT_FILE_SIZE') {
+        return res.status(400).json({ message: 'File size should not exceed 5MB' });
+    }
+    next(err);
+});
+
 app.listen(5000, () => {
     console.log(`Server is running on http://localhost:5000`);
 });

@@ -66,16 +66,13 @@ exports.createAsset = async (req, res, next) => {
             assignedTo,
             submissionDate,
         };
-
-        // Add image data if file is provided
+        //img
         if (req.file) {
             assetData.img = {
                 data: req.file.buffer,
                 contentType: req.file.mimetype
             };
         }
-
-        // Create new asset with image data if available
         const asset = new Asset(assetData);
         await asset.save();
         

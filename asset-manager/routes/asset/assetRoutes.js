@@ -2,7 +2,10 @@ const express = require('express');
 const router = express.Router();
 const assetController = require('../asset/assetController');
 const multer = require('multer');
-const upload = multer({ storage: multer.memoryStorage() });
+const upload = multer({
+    storage: multer.memoryStorage(),
+    limits: { fileSize: 5 * 1024 * 1024 } 
+});
 
 router.get('/', assetController.getAllAssets);
 router.get('/asset-owner/:id', assetController.findUserById);
