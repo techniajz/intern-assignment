@@ -12,21 +12,6 @@ exports.getAllAssets = async (req, res, next) => {
     }
 };
 
-// Get asset by ID and populate assigned user
-exports.getAssetById = async (req, res, next) => {
-    try {
-        const asset = await Asset.findById(req.params.id).populate("assignedTo");
-        if (!asset) {
-            return res.json({ message: 'Asset not found' });
-        }
-        res.json(asset);
-    } catch (error) {
-        res.json({ message: error.message });
-        return next(error);
-    }
-};
-
-
 
 // Add new asset
 exports.createAsset = async (req, res, next) => {
@@ -169,29 +154,7 @@ exports.totalAssetsCount = async (req, res, next) => {
 }
 
 
-
-
-// exports.bulkInsert = async (req, res, next) => {
-   
-//     // const set = parseInt(req.query.set);
-//     // totalBatch = req.query.totalBatch || 1;
-//     bulkData = [];
-//     batch = req.query.batch;
-    
-//     for (i = 1; i <= 1000; i++) {
-//         bulkData.push({
-//             name: "tv" + ((batch*1000)+i),
-//             description: "43 inch, serial number- " + ((batch*1000)+i)
-//         })
-//     }
-//     await Asset.insertMany(bulkData)
-//     res.json(bulkData)
-// }
-
 exports.bulkInsert = async (req, res, next) => {
-   
-    // const set = parseInt(req.query.set);
-    // totalBatch = req.query.totalBatch || 1;
 
  for (j = 1; j <= 1000; j++){
     bulkData = [];
@@ -205,3 +168,5 @@ exports.bulkInsert = async (req, res, next) => {
 }
     res.status(200).send("done")
 }
+
+
